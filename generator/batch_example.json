@@ -1,0 +1,5 @@
+[
+  { "name": "batch_minimal", "mode": "minimal", "framework": "flask", "out": "generated" },
+  { "name": "batch_full_flask", "mode": "full", "framework": "flask", "out": "generated" },
+  { "name": "batch_full_express", "mode": "full", "framework": "express", "out": "generated" }
+]

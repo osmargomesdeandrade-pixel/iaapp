@@ -1,0 +1,11 @@
+{
+  "name": "{{ project_name }}",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "serve -s build",
+    "build": "echo 'build step (static)'",
+    "test": "echo \"No tests configured\""
+  },
+  "dependencies": {}
+}

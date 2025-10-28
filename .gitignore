@@ -1,0 +1,15 @@
+venv/
+venv\
+.venv/
+__pycache__/
+*.pyc
+generated/
+.env
+llm_pending.txt
+llm_generated.txt
+llm_integration.log
+llm_backup/
+.pytest_cache/
+dist/
+build/
+*.egg-info

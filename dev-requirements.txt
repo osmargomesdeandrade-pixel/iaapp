@@ -1,0 +1,6 @@
+# Dependências de desenvolvimento
+flake8>=6.0.0
+mypy>=1.9.0
+# opcionalmente: black, isort
+black>=24.0.0
+isort>=5.12.0
