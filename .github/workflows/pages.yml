@@ -5,11 +5,12 @@ on:
     branches:
       - main
 
-jobs:
-  permissions:
-    pages: write
-    contents: read
+# Grant the workflow the minimum permissions it needs
+permissions:
+  pages: write
+  contents: read
 
+jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
