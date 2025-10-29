@@ -1,15 +1,17 @@
-name: Pages sanity check
+name: Publish docs to GitHub Pages
 
 on:
   push:
     branches:
       - main
 
+# Grant the workflow the minimum permissions it needs
 permissions:
+  pages: write
   contents: read
 
 jobs:
-  sanity:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,5 +28,13 @@ jobs:
           echo "Listing docs folder contents (if present):"
           if [ -d docs ]; then ls -la docs; else echo "docs/ not found"; fi
 
-      - name: Sanity success
-        run: echo "Pages runner sanity check completed"
+      - name: Setup pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
