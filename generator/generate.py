@@ -13,6 +13,7 @@ O script pergunta o nome do projeto e gera os arquivos.
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 APP_PY_TEMPLATE = """from flask import Flask
 
@@ -66,10 +67,12 @@ def copy_tree(src: Path, dst: Path, context: dict | None = None) -> None:
     Preserva subfolders. Overwrites existing files if present.
     """
     # no local alias required here
+    # local alias for Jinja2 Template if available
+    _JINJA_TEMPLATE: Any = None
     try:
-        from jinja2 import Template
+        from jinja2 import Template as _JINJA_TEMPLATE  # type: ignore
     except Exception:
-        Template = None
+        _JINJA_TEMPLATE = None
 
     for p in src.rglob("*"):
         if p.is_dir():
@@ -85,8 +88,8 @@ def copy_tree(src: Path, dst: Path, context: dict | None = None) -> None:
                 data_text = data.decode("utf-8")
             except Exception:
                 text_like = False
-            if text_like and Template and context:
-                rendered = Template(data_text).render(**context)
+            if text_like and _JINJA_TEMPLATE and context:
+                rendered = _JINJA_TEMPLATE(data_text).render(**context)
                 target.write_text(rendered)
             else:
                 target.write_bytes(data)

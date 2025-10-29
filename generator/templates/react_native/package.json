@@ -1,0 +1,9 @@
+{
+  "name": "rn-template",
+  "version": "0.0.1",
+  "private": true,
+  "main": "App.js",
+  "scripts": {
+    "start": "react-native start"
+  }
+}

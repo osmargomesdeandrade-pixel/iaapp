@@ -10,6 +10,7 @@ from __future__ import annotations
 import os
 import sys
 from pathlib import Path
+from typing import Any, Dict
 
 OPENAI_KEY = os.environ.get("OPENAI_API_KEY")
 
@@ -234,7 +235,7 @@ def analyze_snippet(snippet: str) -> dict:
     """
     import ast
 
-    flags = {
+    flags: Dict[str, Any] = {
         "has_exec": False,
         "has_eval": False,
         "has_subprocess": False,

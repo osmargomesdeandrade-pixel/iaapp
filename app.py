@@ -65,7 +65,7 @@ def knn_predict(
     dists = [(euclidean(x, xt), label) for xt, label in zip(X_train, y_train)]
     dists.sort(key=lambda t: t[0])
     topk = dists[:k]
-    counts = {}
+    counts: dict[int, int] = {}
     for _, label in topk:
         counts[label] = counts.get(label, 0) + 1
     # escolhe label com maior contagem
