@@ -9,6 +9,7 @@ on:
 permissions:
   pages: write
   contents: read
+  id-token: write
 
 jobs:
   build-deploy:
@@ -16,6 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Show repo root
         run: |
